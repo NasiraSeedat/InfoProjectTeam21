@@ -4,7 +4,7 @@ Option Infer Off
 Public Class Disease
     '<<Attributes>>
     Private _NumberInfected As Integer
-    Private _DeathRate As Integer
+    Private _DeathRate As Double
     Private _Name As String
     Private _Persons() As Person
 
@@ -18,11 +18,11 @@ Public Class Disease
         End Set
     End Property
 
-    Public Property DeathRate As Integer
+    Public Property DeathRate As Double
         Get
             Return _DeathRate
         End Get
-        Set(value As Integer)
+        Set(value As Double)
             _DeathRate = value
         End Set
     End Property
