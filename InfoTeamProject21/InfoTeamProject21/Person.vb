@@ -5,10 +5,9 @@ Public Class Person
     '<<Attributes>>
     Private _Name As String
     Private _Age As Integer
-    Private _Diseases As Disease
 
     '<<Property>>
-    Public Property Name() As String
+    Public Property Name As String
         Get
             Return _Name
         End Get
@@ -17,21 +16,12 @@ Public Class Person
         End Set
     End Property
 
-    Public Property Age() As Integer
+    Public Property Age As Integer
         Get
             Return _Age
         End Get
         Set(value As Integer)
             _Age = value
-        End Set
-    End Property
-
-    Public Property Diseases() As Disease
-        Get
-            Return _Diseases
-        End Get
-        Set(value As Disease)
-            _Diseases = value
         End Set
     End Property
 

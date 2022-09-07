@@ -6,9 +6,10 @@ Public Class Disease
     Private _NumberInfected As Integer
     Private _DeathRate As Integer
     Private _Name As String
+    Private _Persons() As Person
 
     '<<Property>>
-    Public Property NumberInfected() As Integer
+    Public Property NumberInfected As Integer
         Get
             Return _NumberInfected
         End Get
@@ -35,7 +36,20 @@ Public Class Disease
         End Set
     End Property
 
+    Public Property Persons(index As Integer) As Person
+        Get
+            Return _Persons(index)
+        End Get
+        Set(value As Person)
+            _Persons(index) = value
+        End Set
+    End Property
+
     '<<Methoods>>
+    Public Sub Resize(size As Integer) 'resize the Array
+        ReDim _Persons(size)
+    End Sub
+
     'calclulate the TransmitionRates of the diseases
     Public Overridable Function TransmitionRates(DiseasesPrevalence As Double) As Double
         Return NumberInfected / DiseasesPrevalence
