@@ -2,6 +2,7 @@
 Option Explicit On
 Option Infer Off
 Public Class HIVandAIDS
+    Inherits Disease
     'ATTRIBUTES
     Private _YearsWith As Double
     Private _TypefARV As String
@@ -29,12 +30,12 @@ Public Class HIVandAIDS
     'CONSTRUCTORS
     'Parameter-less
     Public Sub New()
-
+        MyBase.New()
     End Sub
     'Parameterised
-    Public Sub New(YearsWith As Double)
-        _YearsWith = YearsWith
-    End Sub
+    'Public Sub New(YearsWith As Double)
+    '    _YearsWith = YearsWith
+    'End Sub
 
     'CLASS METHODS
     'Function to determine the type of ARV the person will have to use 

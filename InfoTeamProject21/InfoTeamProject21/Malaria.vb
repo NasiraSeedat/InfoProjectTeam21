@@ -2,6 +2,7 @@
 Option Explicit On
 Option Infer Off
 Public Class Malaria
+    Inherits Disease
     'ATTRIBUTES
     Private _ParasiteType As Integer
     Private _NumSymptoms As Integer 'set as integer to make it easier to determine whether on should see a doctor
@@ -28,9 +29,9 @@ Public Class Malaria
 
     'CONSTRUCTORS
     'Parameter-less
-    Public Sub New()
-
-    End Sub
+    'Public Sub New()
+    '    MyBase.New
+    'End Sub
     'Parameterized
     Public Sub New(NumSymptoms As Integer)
         NumSymptoms = _NumSymptoms
