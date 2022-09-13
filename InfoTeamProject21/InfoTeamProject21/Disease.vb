@@ -67,7 +67,7 @@ Public Class Disease
     'End Sub
 
     'calclulate the TransmitionRates of the diseases
-    Public Function TransmitionRates(DiseasesPrevalence As Double) As Double
+    Public Overridable Function TransmitionRates(DiseasesPrevalence As Double) As Double
         Return NumberInfected / DiseasesPrevalence
     End Function
 

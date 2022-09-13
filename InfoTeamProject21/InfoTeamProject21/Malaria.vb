@@ -40,7 +40,7 @@ Public Class Malaria
     'CLASS METHODS
     'Function to determine whether the person should see a doctor
     'If the person has a specific type of parasite and a certain number of symptoms they will either need to see a doctor or not see a doctor 
-    Public Function SeeDoctor() As Boolean
+    Public Function SeeDoctor(ByVal _ParasiteType As Integer, ByVal _NumSymptoms As Integer, ByRef _SeeDoc As Boolean) As Boolean
         Select Case (_ParasiteType)
             Case 1
                 If _NumSymptoms < 5 Then

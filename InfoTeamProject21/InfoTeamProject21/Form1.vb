@@ -81,9 +81,25 @@ Public Class frmDiseases
 
     Private Sub btnTransSurvRate_Click(sender As Object, e As EventArgs) Handles btnTransSurvRate.Click
 
+
     End Sub
 
     Private Sub btnSeeDoc_Click(sender As Object, e As EventArgs) Handles btnSeeDoc.Click
+        Dim NumSymptoms As Integer
+        type = CInt(InputBox("Which disease would you like to add to?" & vbNewLine & "1- Malaria" & vbNewLine & "2- HIV & AIDS", "Type of disease"))
+
+        Select Case type
+            Case 1
+                Dim persons(ObjDisease.NumberInfected) As Person
+                For Np As Integer = 1 To ObjDisease.NumberInfected
+                    persons(Np) = New Person
+                    Malaria.ParasiteType = CInt(InputBox("What parasite type is it ?" & Environment.NewLine & "Choose from 1 - 4."))
+                    NumSymptoms = CInt(InputBox("How many malaria symptoms does person " & CStr(Np) & "have ?"))
+                    Dim seedoc As Boolean = Malaria.SeeDoctor(Malaria.ParasiteType, NumSymptoms, seedoc)
+                Next Np
+            Case 2
+                objHIV.YearsWith = CInt(InputBox("How many years does " & CStr(objHIV.Persons(Np).Name) & " have HIV and AIDS?", "years with"))
+        End Select
 
     End Sub
 End Class
