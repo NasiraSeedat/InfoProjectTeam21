@@ -78,5 +78,13 @@ Public Class frmDiseases
 
 
     End Sub
+
+    Private Sub btnTransSurvRate_Click(sender As Object, e As EventArgs) Handles btnTransSurvRate.Click
+
+    End Sub
+
+    Private Sub btnSeeDoc_Click(sender As Object, e As EventArgs) Handles btnSeeDoc.Click
+
+    End Sub
 End Class
 
