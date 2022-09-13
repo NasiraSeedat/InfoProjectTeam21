@@ -45,6 +45,15 @@ Public Class Disease
         End Set
     End Property
 
+    Public Property Persons() As Person()
+        Get
+            Return _Persons
+        End Get
+        Set(value() As Person)
+            _Persons = value
+        End Set
+    End Property
+
     '<<Methoods>>
     Public Sub Resize(size As Integer) 'resize the Array
         ReDim _Persons(size)
