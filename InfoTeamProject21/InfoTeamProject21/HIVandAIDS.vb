@@ -2,6 +2,7 @@
 Option Explicit On
 Option Infer Off
 Public Class HIVandAIDS
+    Inherits Disease
     'ATTRIBUTES
     Private _YearsWith As Double
     Private _TypefARV As String
@@ -29,12 +30,12 @@ Public Class HIVandAIDS
     'CONSTRUCTORS
     'Parameter-less
     Public Sub New()
-
+        MyBase.New()
     End Sub
     'Parameterised
-    Public Sub New(YearsWith As Double)
-        _YearsWith = YearsWith
-    End Sub
+    'Public Sub New(YearsWith As Double)
+    '    _YearsWith = YearsWith
+    'End Sub
 
     'CLASS METHODS
     'Function to determine the type of ARV the person will have to use 
@@ -60,6 +61,33 @@ Public Class HIVandAIDS
         End If
 
         Return (_SeeDoc)
+    End Function
+
+    Public Function SurvivalRate(HAART As Boolean, TimeInfected As Integer) As Double 'Calculate survival rate if person has HIV/AIDS
+        'HAART is a treatment for HIV/AIDS
+        'TimeInfected is the time that the patient has had the disease
+
+        If HAART = True Then
+            Select Case TimeInfected
+                Case <= 2
+                    Return 87
+                Case 2 To 4
+                    Return 86
+                Case 4 To 8
+                    Return 78
+                Case > 8
+                    Return 61
+            End Select
+        Else
+            Select Case TimeInfected
+                Case <= 2
+                    Return 48
+                Case 2 To 4
+                    Return 26
+                Case > 4
+                    Return 18
+            End Select
+        End If
     End Function
 
 
