@@ -15,10 +15,11 @@ Option Infer Off
 
 
 Public Class frmDiseases
-    Private ObjDisease As Disease
+    Private ObjDisease() As Disease
     Private Malaria As Malaria
     Private objHIV As HIVandAIDS
     Private type As Integer
+    Private nD As Integer
 
     'Sub for placing text in the grid for HIV & AIDS
     Public Sub PlaceHIVNAIDS(ByVal r As Integer, ByVal c As Integer, ByVal t As String)
@@ -37,16 +38,20 @@ Public Class frmDiseases
 
     Private Sub btnInputInfo_Click(sender As Object, e As EventArgs) Handles btnInputInfo.Click
         type = CInt(InputBox("Which disease would you like to add to?" & vbNewLine & "1- HIV/AIDS" & vbNewLine & "2- Malaria", "Type of disease"))
+        nD = 2
+        ReDim ObjDisease(nD)
+        For i As Integer = 1 To nD
+            ObjDisease(i) = New Disease
+        Next i
+
 
         Select Case type
             Case 1
 
+
                 Dim NumberInfected As Integer = CInt(InputBox("How many people have HIV/AIDS?", "People with HIV and AIDS"))
-                ObjDisease = New Disease
-                ReDim ObjDisease.Persons(ObjDisease.NumberInfected)
                 grdHIVnAIDS.Rows = NumberInfected + 1
                 grdHIVnAIDS.Cols = 6
-
                 Dim persons(NumberInfected) As Person
                 For Np As Integer = 1 To NumberInfected
                     objHIV = New HIVandAIDS
@@ -54,10 +59,9 @@ Public Class frmDiseases
                     persons(Np).Name = InputBox("What is person " & CStr(Np) & "'s name?", "Name")
                     persons(Np).Age = CInt(InputBox("How old is " & CStr(persons(Np).Name) & "?", "Age"))
                     objHIV.Persons = persons
-
-
                     objHIV.YearsWith = CInt(InputBox("How many years does " & CStr(objHIV.Persons(Np).Name) & " have HIV and AIDS?", "years with"))
-
+                    'Upcasting HIV....
+                    ObjDisease(1) = objHIV
 
                     'placing text in hiv& aids grid
                     PlaceHIVNAIDS(Np, 0, persons(Np).Name)
@@ -65,8 +69,10 @@ Public Class frmDiseases
                     PlaceHIVNAIDS(Np, 2, CStr(objHIV.YearsWith))
                 Next Np
             Case 2
-                ObjDisease.NumberInfected = CInt(InputBox("How many people have Malaria?", "People with Malaria"))
-                grdMalaria.Rows = ObjDisease.NumberInfected + 1
+                Malaria.NumberInfected = CInt(InputBox("How many people have Malaria?", "People with Malaria"))
+                grdMalaria.Rows = Malaria.NumberInfected + 1
+                'Upcasting Malaria...
+                ObjDisease(2) = Malaria
         End Select
 
     End Sub
@@ -81,26 +87,41 @@ Public Class frmDiseases
 
     Private Sub btnTransSurvRate_Click(sender As Object, e As EventArgs) Handles btnTransSurvRate.Click
 
+        Dim persons(objHIV.NumberInfected) As Person
+        For np As Integer = 1 To objHIV.NumberInfected
+            persons(np) = New Person
+            Dim Haart As Boolean = CBool(InputBox("Did person " & CStr(np) & " undergo HAART?"))
+            Dim TimeInfect As Integer = CInt(InputBox("How long has person " & CStr(np) & " been infected?"))
+            Dim survrate As Double = objHIV.SurvivalRate(Haart, TimeInfect)
+            'Please add display code...
+        Next np
+        For i As Integer = 1 To nD
+            ObjDisease(i).Prevelance = CDbl(InputBox("What is the disease prevelance for disease " & CStr(i) & " ?"))
+            Dim transrate As Double = ObjDisease(i).TransmitionRates(ObjDisease(i).Prevelance)
+            'Please add display code.....
+        Next i
 
     End Sub
 
     Private Sub btnSeeDoc_Click(sender As Object, e As EventArgs) Handles btnSeeDoc.Click
         Dim NumSymptoms As Integer
-        type = CInt(InputBox("Which disease would you like to add to?" & vbNewLine & "1- Malaria" & vbNewLine & "2- HIV & AIDS", "Type of disease"))
+        Dim Infected As Integer = CInt(InputBox("How many people are infected?"))
+        Dim persons(Infected) As Person
 
-        Select Case type
-            Case 1
-                Dim persons(ObjDisease.NumberInfected) As Person
-                For Np As Integer = 1 To ObjDisease.NumberInfected
-                    persons(Np) = New Person
+        For Np As Integer = 1 To Infected
+            persons(Np) = New Person
+            Dim choice As Integer = CInt(InputBox("Which disease does person " & CStr(Np) & " have?" & vbNewLine & "1- Malaria" & vbNewLine & "2- HIV & AIDS", "Type of disease"))
+
+            Select Case choice
+                Case 1
                     Malaria.ParasiteType = CInt(InputBox("What parasite type is it ?" & Environment.NewLine & "Choose from 1 - 4."))
                     NumSymptoms = CInt(InputBox("How many malaria symptoms does person " & CStr(Np) & "have ?"))
                     Dim seedoc As Boolean = Malaria.SeeDoctor(Malaria.ParasiteType, NumSymptoms, seedoc)
-                Next Np
-            Case 2
-                objHIV.YearsWith = CInt(InputBox("How many years does " & CStr(objHIV.Persons(Np).Name) & " have HIV and AIDS?", "years with"))
-        End Select
-
+                Case 2
+                    Dim seedoctor As Boolean = objHIV.SeeDoctor()
+            End Select
+            'Please add display code......
+        Next Np
     End Sub
 End Class
 

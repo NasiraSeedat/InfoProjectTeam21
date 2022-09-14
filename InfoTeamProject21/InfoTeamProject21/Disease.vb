@@ -6,6 +6,7 @@ Public Class Disease
     Private _NumberInfected As Integer
     Private _DeathRate As Double
     Private _Name As String
+    Private _Prevelance As Double
     Private _Persons() As Person
 
     '<<Property>>
@@ -18,6 +19,14 @@ Public Class Disease
         End Set
     End Property
 
+    Public Property Prevelance As Double
+        Set(value As Double)
+            _Prevelance = value
+        End Set
+        Get
+            Return _Prevelance
+        End Get
+    End Property
     Public Property DeathRate As Double
         Get
             Return _DeathRate
