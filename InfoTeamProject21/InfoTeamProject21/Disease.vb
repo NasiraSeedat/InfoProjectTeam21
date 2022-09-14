@@ -54,12 +54,4 @@ Public Class Disease
     Public Overridable Function TransmitionRates(DiseasesPrevalence As Double) As Double
         Return NumberInfected / DiseasesPrevalence
     End Function
-<<<<<<< Updated upstream
-=======
-
-    Public Function SeeDoctor() As Boolean
-        Return False
-    End Function
-
->>>>>>> Stashed changes
 End Class
