@@ -2,11 +2,10 @@
 Option Explicit On
 Option Infer Off
 Public Class HIVandAIDS
-    Inherits Disease
+    Inherits Person
     'ATTRIBUTES
     Private _YearsWith As Double
     Private _TypefARV As String
-    Private _SeeDoc As Boolean
 
     'PROPERTY METHODS
     Public Property YearsWith() As Double
@@ -53,14 +52,14 @@ Public Class HIVandAIDS
     End Function
 
     'Function to determine whether the person should see a doctor or not 
-    Public Function SeeDoctor() As Boolean
+    Public Overrides Function SeeDoctor() As Boolean
         If (_YearsWith < 5) Then
-            _SeeDoc = False
+            SeeDoc = False
         Else
-            _SeeDoc = True
+            SeeDoc = True
         End If
 
-        Return (_SeeDoc)
+        Return (SeeDoc)
     End Function
 
     Public Function SurvivalRate(HAART As Boolean, TimeInfected As Integer) As Double 'Calculate survival rate if person has HIV/AIDS
