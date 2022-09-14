@@ -1,10 +1,11 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
-Public Class Person
+Public MustInherit Class Person
     '<<Attributes>>
     Private _Name As String
     Private _Age As Integer
+    Private _SeeDoc As Boolean
 
     '<<Property>>
     Public Property Name As String
@@ -25,6 +26,15 @@ Public Class Person
         End Set
     End Property
 
+
+    Public Property SeeDoc As Boolean
+        Get
+            Return _SeeDoc
+        End Get
+        Set(value As Boolean)
+            _SeeDoc = value
+        End Set
+    End Property
     '<<Methoods>>
     Public Function SurvivalRate(age As Integer) As Double 'Calculate survival rate if person has Maleria
         If age < 5 Then
@@ -34,5 +44,6 @@ Public Class Person
         End If
     End Function
 
+    Public MustOverride Function SeeDoctor() As Boolean
 
 End Class

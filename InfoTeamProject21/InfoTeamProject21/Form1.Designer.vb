@@ -56,16 +56,16 @@ Partial Class frmDiseases
         '
         'btnTransSurvRate
         '
-        Me.btnTransSurvRate.Location = New System.Drawing.Point(23, 101)
+        Me.btnTransSurvRate.Location = New System.Drawing.Point(23, 177)
         Me.btnTransSurvRate.Name = "btnTransSurvRate"
         Me.btnTransSurvRate.Size = New System.Drawing.Size(122, 46)
         Me.btnTransSurvRate.TabIndex = 3
-        Me.btnTransSurvRate.Text = "Calculate Transmition and Survival Rate"
+        Me.btnTransSurvRate.Text = "Calculate Transmition Rate"
         Me.btnTransSurvRate.UseVisualStyleBackColor = True
         '
         'btnSeeDoc
         '
-        Me.btnSeeDoc.Location = New System.Drawing.Point(23, 171)
+        Me.btnSeeDoc.Location = New System.Drawing.Point(23, 103)
         Me.btnSeeDoc.Name = "btnSeeDoc"
         Me.btnSeeDoc.Size = New System.Drawing.Size(122, 46)
         Me.btnSeeDoc.TabIndex = 4

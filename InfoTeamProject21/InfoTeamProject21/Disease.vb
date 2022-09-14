@@ -4,7 +4,6 @@ Option Infer Off
 Public Class Disease
     '<<Attributes>>
     Private _NumberInfected As Integer
-    Private _DeathRate As Double
     Private _Name As String
     Private _Persons() As Person
 
@@ -15,15 +14,6 @@ Public Class Disease
         End Get
         Set(value As Integer)
             _NumberInfected = value
-        End Set
-    End Property
-
-    Public Property DeathRate As Double
-        Get
-            Return _DeathRate
-        End Get
-        Set(value As Double)
-            _DeathRate = value
         End Set
     End Property
 
@@ -60,6 +50,7 @@ Public Class Disease
     'End Sub
 
     Public Sub New() 'resize the Array
+
     End Sub
 
     'Public Sub New(Number As Integer)
@@ -68,11 +59,7 @@ Public Class Disease
 
     'calclulate the TransmitionRates of the diseases
     Public Overridable Function TransmitionRates(DiseasesPrevalence As Double) As Double
-        Return NumberInfected / DiseasesPrevalence
-    End Function
-
-    Public Overridable Function SeeADoctor() As Boolean
-        Return False
+        Return _NumberInfected / DiseasesPrevalence
     End Function
 
 End Class
