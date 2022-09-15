@@ -31,10 +31,7 @@ Public Class HIVandAIDS
     Public Sub New()
         MyBase.New()
     End Sub
-    'Parameterised
-    'Public Sub New(YearsWith As Double)
-    '    _YearsWith = YearsWith
-    'End Sub
+
 
     'CLASS METHODS
     'Function to determine the type of ARV the person will have to use 

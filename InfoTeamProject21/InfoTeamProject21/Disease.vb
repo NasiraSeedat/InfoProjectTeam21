@@ -45,17 +45,13 @@ Public Class Disease
     End Property
 
     '<<Methoods>>
-    'Public Sub New(size As Integer) 'resize the Array
-    '    ReDim _Persons(size)
-    'End Sub
+
 
     Public Sub New() 'resize the Array
 
     End Sub
 
-    'Public Sub New(Number As Integer)
-    '    _NumberInfected = Number
-    'End Sub
+
 
     'calclulate the TransmitionRates of the diseases
     Public Function TransmitionRates(DiseasesPrevalence As Double) As Double

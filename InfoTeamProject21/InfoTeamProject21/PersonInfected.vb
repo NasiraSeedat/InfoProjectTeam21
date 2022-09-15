@@ -36,13 +36,6 @@ Public MustInherit Class PersonInfected
         End Set
     End Property
     '<<Methoods>>
-    Public Function SurvivalRate(age As Integer) As Double 'Calculate survival rate if person has Maleria
-        If age < 5 Then
-            Return 3.13
-        Else
-            Return 3.05
-        End If
-    End Function
 
     Public MustOverride Function SeeDoctor() As Boolean
 
