@@ -51,8 +51,16 @@ Public Class frmDiseases
                     persons(Np).Age = CInt(InputBox("How old is " & CStr(persons(Np).Name) & "?", "Age"))
 
                     persons(Np).YearsWith = CInt(InputBox("How many years does " & CStr(persons(Np).Name) & " have HIV and AIDS?", "years with"))
+                    Dim OnTreatment As Integer
                     Dim HAART As Boolean
-                    HAART = CBool(InputBox("Is " & CStr(persons(Np).Name) & " on HAART(HIV/AIDS treatment)" & vbNewLine & "True or false", "HAART"))
+                    OnTreatment = CInt(InputBox("Is " & CStr(persons(Np).Name) & " on HAART(HIV/AIDS treatment)" & vbNewLine & "1. True" & vbNewLine & "2. False", "HAART"))
+                    Select Case OnTreatment
+                        Case 1
+                            HAART = True
+                        Case 2
+                            HAART = False
+                    End Select
+
 
                     'placing text in hiv& aids grid
                     PlaceHIVNAIDS(Np, 0, persons(Np).Name)
@@ -60,6 +68,7 @@ Public Class frmDiseases
                     PlaceHIVNAIDS(Np, 2, CStr(persons(Np).YearsWith))
                     PlaceHIVNAIDS(Np, 3, CStr(persons(Np).CalcTypefARV(persons(Np).YearsWith)))
                     PlaceHIVNAIDS(Np, 4, CStr(persons(Np).SurvivalRate(HAART, CInt(persons(Np).YearsWith))))
+                    PlaceHIVNAIDS(Np, 5, CStr(HAART))
                 Next Np
                 ObjDisease(1).Persons = persons
                 ObjDisease(1).NumberInfected = NumberInfectedHiv
@@ -96,21 +105,22 @@ Public Class frmDiseases
     End Sub
 
     Private Sub frmDiseases_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        grdHIVnAIDS.Cols = 6
+        grdHIVnAIDS.Cols = 7
         PlaceHIVNAIDS(0, 0, "Name")
         PlaceHIVNAIDS(0, 1, "Age")
         PlaceHIVNAIDS(0, 2, "Years with")
         PlaceHIVNAIDS(0, 3, "Type of ARV on")
         PlaceHIVNAIDS(0, 4, "Survival Rate")
-        PlaceHIVNAIDS(0, 5, "See a doctor")
+        PlaceHIVNAIDS(0, 5, "On Treatment")
+        PlaceHIVNAIDS(0, 6, "See a doctor")
 
 
-        grdMalaria.Cols = 6
+        grdMalaria.Cols = 5
         PlaceMalaria(0, 0, "Name")
         PlaceMalaria(0, 1, "Age")
         PlaceMalaria(0, 2, "Parasite Type")
         PlaceMalaria(0, 3, "Number of symptoms")
-        PlaceMalaria(0, 4, "see a doctor")
+        PlaceMalaria(0, 4, "See a doctor")
 
         ReDim ObjDisease(2)
         ObjDisease(1) = New Disease
@@ -137,7 +147,7 @@ Public Class frmDiseases
 
         'polymorphic function
         For i As Integer = 1 To NumberInfectedHiv
-            PlaceHIVNAIDS(i, 5, CStr(ObjDisease(1).Persons(i).SeeDoctor()))
+            PlaceHIVNAIDS(i, 6, CStr(ObjDisease(1).Persons(i).SeeDoctor()))
         Next i
 
         For j As Integer = 1 To NumberInfectedMalaria

@@ -22,6 +22,7 @@ Partial Class frmDiseases
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmDiseases))
         Me.grdHIVnAIDS = New UJGrid.UJGrid()
         Me.btnInputInfo = New System.Windows.Forms.Button()
         Me.btnTransSurvRate = New System.Windows.Forms.Button()
@@ -33,6 +34,8 @@ Partial Class frmDiseases
         Me.txtTransMalaria = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grdHIVnAIDS
@@ -42,32 +45,32 @@ Partial Class frmDiseases
         Me.grdHIVnAIDS.Location = New System.Drawing.Point(186, 31)
         Me.grdHIVnAIDS.Name = "grdHIVnAIDS"
         Me.grdHIVnAIDS.Scrollbars = System.Windows.Forms.ScrollBars.Both
-        Me.grdHIVnAIDS.Size = New System.Drawing.Size(434, 150)
+        Me.grdHIVnAIDS.Size = New System.Drawing.Size(628, 150)
         Me.grdHIVnAIDS.TabIndex = 0
         '
         'btnInputInfo
         '
-        Me.btnInputInfo.Location = New System.Drawing.Point(23, 31)
+        Me.btnInputInfo.Location = New System.Drawing.Point(12, 242)
         Me.btnInputInfo.Name = "btnInputInfo"
-        Me.btnInputInfo.Size = New System.Drawing.Size(122, 46)
+        Me.btnInputInfo.Size = New System.Drawing.Size(156, 46)
         Me.btnInputInfo.TabIndex = 2
         Me.btnInputInfo.Text = "Input Information"
         Me.btnInputInfo.UseVisualStyleBackColor = True
         '
         'btnTransSurvRate
         '
-        Me.btnTransSurvRate.Location = New System.Drawing.Point(23, 177)
+        Me.btnTransSurvRate.Location = New System.Drawing.Point(12, 387)
         Me.btnTransSurvRate.Name = "btnTransSurvRate"
-        Me.btnTransSurvRate.Size = New System.Drawing.Size(122, 46)
+        Me.btnTransSurvRate.Size = New System.Drawing.Size(156, 46)
         Me.btnTransSurvRate.TabIndex = 3
         Me.btnTransSurvRate.Text = "Calculate Transmition Rate"
         Me.btnTransSurvRate.UseVisualStyleBackColor = True
         '
         'btnSeeDoc
         '
-        Me.btnSeeDoc.Location = New System.Drawing.Point(23, 103)
+        Me.btnSeeDoc.Location = New System.Drawing.Point(12, 313)
         Me.btnSeeDoc.Name = "btnSeeDoc"
-        Me.btnSeeDoc.Size = New System.Drawing.Size(122, 46)
+        Me.btnSeeDoc.Size = New System.Drawing.Size(156, 46)
         Me.btnSeeDoc.TabIndex = 4
         Me.btnSeeDoc.Text = "See A Doctor"
         Me.btnSeeDoc.UseVisualStyleBackColor = True
@@ -88,7 +91,7 @@ Partial Class frmDiseases
         Me.grdMalaria.Location = New System.Drawing.Point(189, 242)
         Me.grdMalaria.Name = "grdMalaria"
         Me.grdMalaria.Scrollbars = System.Windows.Forms.ScrollBars.Both
-        Me.grdMalaria.Size = New System.Drawing.Size(431, 150)
+        Me.grdMalaria.Size = New System.Drawing.Size(625, 150)
         Me.grdMalaria.TabIndex = 6
         '
         'Label2
@@ -132,11 +135,22 @@ Partial Class frmDiseases
         Me.Label4.TabIndex = 11
         Me.Label4.Text = "Transmition Rate for Malaria:"
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(15, 13)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(153, 211)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 12
+        Me.PictureBox1.TabStop = False
+        '
         'frmDiseases
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(662, 459)
+        Me.ClientSize = New System.Drawing.Size(843, 459)
+        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.txtTransMalaria)
@@ -150,6 +164,7 @@ Partial Class frmDiseases
         Me.Controls.Add(Me.grdHIVnAIDS)
         Me.Name = "frmDiseases"
         Me.Text = "Diseases"
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -166,4 +181,5 @@ Partial Class frmDiseases
     Friend WithEvents txtTransMalaria As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

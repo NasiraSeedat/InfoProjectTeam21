@@ -1,7 +1,7 @@
 ﻿Option Strict On
 Option Explicit On
 Option Infer Off
-Public MustInherit Class Person
+Public MustInherit Class PersonInfected
     '<<Attributes>>
     Private _Name As String
     Private _Age As Integer

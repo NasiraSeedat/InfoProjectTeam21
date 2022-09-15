@@ -2,7 +2,7 @@
 Option Explicit On
 Option Infer Off
 Public Class Malaria
-    Inherits Person
+    Inherits PersonInfected
     'ATTRIBUTES
     Private _ParasiteType As Integer
     Private _NumSymptoms As Integer 'set as integer to make it easier to determine whether on should see a doctor

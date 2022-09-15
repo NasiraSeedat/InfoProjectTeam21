@@ -2,7 +2,7 @@
 Option Explicit On
 Option Infer Off
 Public Class HIVandAIDS
-    Inherits Person
+    Inherits PersonInfected
     'ATTRIBUTES
     Private _YearsWith As Double
     Private _TypefARV As String
